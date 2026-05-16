@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "elara-hero": {
+        "type": "elara-hero",
+        "settings": {}
+        }
+    },
+    "order": [
+        "elara-hero"
+    ]
+}

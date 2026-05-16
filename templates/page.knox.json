@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "knox-hero": {
+        "type": "knox-hero",
+        "settings": {}
+        }
+    },
+    "order": [
+        "knox-hero"
+    ]
+}
