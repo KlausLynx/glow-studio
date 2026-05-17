@@ -1,6 +1,102 @@
-<div class="knox-hero">
-  <h1>Knox</h1>
-</div>
+<section class="knox-hero" id="knox-hero">
+  <div class="knox-hero__overlay"></div>
+  <div class="knox-hero__content">
+    <h1 class="knox-hero__heading">Knox</h1>
+    <p class="knox-hero__tagline">The art of the perfect cut.</p>
+    <a href="#" class="knox-hero__btn">Book Now</a>
+  </div>
+</section>
+
+<style>
+  .knox-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://cdn.shopify.com/s/files/1/0791/2878/9223/files/knox-hero_800x800.jpg?v=1778969751');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .knox-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(20, 25, 40, 0.65);
+  }
+
+  .knox-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .knox-hero__heading,
+  .knox-hero__tagline,
+  .knox-hero__btn {
+    opacity: 0;
+  }
+
+  .knox-hero__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--knox-dark-text);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .knox-hero__tagline {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--knox-dark-accent);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .knox-hero__btn {
+    margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    background-color: transparent;
+    border: 1px solid var(--knox-dark-accent);
+    color: var(--knox-dark-accent);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .knox-hero__btn:hover {
+    background-color: var(--knox-dark-accent);
+    color: var(--knox-dark-bg);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    gsap.fromTo('.knox-hero__heading',
+      { y: 60, opacity: 0 },
+      { duration: 1.2, y: 0, opacity: 1, ease: 'power3.out' }
+    );
+
+    gsap.fromTo('.knox-hero__tagline',
+      { y: 40, opacity: 0 },
+      { duration: 1.2, y: 0, opacity: 1, ease: 'power3.out', delay: 0.4 }
+    );
+
+    gsap.fromTo('.knox-hero__btn', 
+      { y: 30, opacity: 0 },
+      { duration: 1, y: 0, opacity: 1, ease: 'power3.out', delay: 0.7 }
+    );
+  });
+</script>
 
 {% schema %}
 {

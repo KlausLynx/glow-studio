@@ -3,9 +3,14 @@
         "knox-hero": {
         "type": "knox-hero",
         "settings": {}
+        },
+        "knox-services": {
+            "type": "knox-services",
+            "settings": {}
         }
     },
     "order": [
-        "knox-hero"
+        "knox-hero",
+        "knox-services"
     ]
 }

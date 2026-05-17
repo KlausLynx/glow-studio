@@ -25,6 +25,43 @@ body {
   --submenu-animation-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* ============================================
+    GLOW STUDIO — DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Fonts */
+  --font-heading: 'Habibi', serif;
+  --font-body: 'Merriweather', serif;
+
+  /* Knox - Dark Mode */
+  --knox-dark-bg: #202940;
+  --knox-dark-text: #e9e0e0;
+  --knox-dark-primary: #4A4947;
+  --knox-dark-secondary: #9A8678;
+  --knox-dark-accent: #CAAA98;
+
+  /* Knox - Light Mode */
+  --knox-light-bg: #bfcadf;
+  --knox-light-text: #1e1515;
+  --knox-light-primary: #b9b8b6;
+  --knox-light-secondary: #867365;
+  --knox-light-accent: #684836;
+
+  /* Elara - Light Mode */
+  --elara-light-bg: #fcf8f8;
+  --elara-light-text: #292929;
+  --elara-light-primary: #641b2f;
+  --elara-light-secondary: #8b2d3b;
+  --elara-light-accent: #be5b50;
+
+  /* Elara - Dark Mode */
+  --elara-dark-bg: #070303;
+  --elara-dark-text: #d6d6d6;
+  --elara-dark-primary: #e49bae;
+  --elara-dark-secondary: #d27482;
+  --elara-dark-accent: #af4c41;
+}
+
 html {
   /* Firefox */
   scrollbar-width: thin;
