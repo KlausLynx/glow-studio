@@ -22,8 +22,6 @@
   },
   "homepage": "https://github.com/KlausLynx/glow-studio#readme",
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0",
     "vite": "^8.0.13"
   },
   "dependencies": {
