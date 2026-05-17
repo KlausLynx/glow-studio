@@ -1,0 +1,212 @@
+<section class="elara-services">
+    <div class="elara-services__header">
+        <h2 class="elara-services__title">Crafted for Her</h2>
+        <p class="elara-services__subtitle">What We Offer</p>
+    </div>
+
+    <div class="elara-services__grid">
+        {% assign services = "Wash & Blowout,25 mins,3000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/Wash_800x800.jpg?v=1779036816|Cut & Style,1 hr,16000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/cut_800x800.jpg?v=1779036816|Colour & Highlights, 2.5 hrs,18000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/color_800x800.jpg?v=1779036818|Keratin Treatment,45 mins,12000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/kretin_800x800.jpg?v=1779036830|Braids & Weaves,5 hrs,28000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/braid_800x800.jpg?v=1779036831|Deep Conditioning,7 hrs,15000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/deep_800x800.jpg?v=1779036828|Home Service,7 hrs, 35000,https://cdn.shopify.com/s/files/1/0791/2878/9223/files/home_elara_800x800.jpg?v=1779037010" | split: "|" %}
+
+        {% for service in services %}
+            {% assign details = service | split: "," %}
+            <div class="elara-services__card">
+                <div class="elara-services__innerCard">
+                    <div class="elara-services__front-card">
+                        <div class="elara-services__image-wrap">
+                            <img
+                            src="{{ details[3] }}"
+                            alt="{{ details[0] }}"
+                            class="elara-services__image"
+                            loading="lazy"
+                            width="400"
+                            height="200"
+                            >
+                        </div>
+                        <div class="elara-services__label">
+                            <h3 class="elara-services__name">{{ details[0] }}</h3>
+                        </div>
+                    </div>
+                    <div class="elara-services__back-card">
+                        <div class="elara-services__card-top">
+                            <span class="elara-services__name elara-services_back_name">{{ details[0] }}</span>
+                        </div>
+                        <div class="elara-services__card-top">
+                            <span class="elara-services__duration">{{ details[1] }}</span>
+                        </div>
+                        <p class="elara-services__price">₦{{ details[2] }}</p>
+                        <a href="#" class="elara-services__btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<style>
+    .elara-services {
+        background-color: var(--elara-light-bg);
+        padding: 5rem 2rem;
+    }
+
+    .elara-services__header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .elara-services__title {
+        font-family: var(--font-heading);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--elara-light-text);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .elara-services__subtitle {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--elara-dark-accent);
+        letter-spacing: 0.05em;
+    }
+
+
+    .elara-services__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+        /* Card Container */
+    .elara-services__card {
+        perspective: 1000px;
+        height: 350px;
+        cursor: pointer;
+    }
+
+    /* Inner wrapper that flips */
+    .elara-services__innerCard {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.7s ease;
+    }
+
+    /* Trigger flip on hover */
+    .elara-services__card:hover .elara-services__innerCard {
+        transform: rotateY(180deg);
+    }
+
+    /* Both faces share these styles */
+    .elara-services__front-card,
+    .elara-services__back-card {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    /* Front face */
+    .elara-services__front-card {
+        background-color: var(--elara-light-primary);
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Back face — hidden behind front by default */
+    .elara-services__back-card {
+        transform: rotateY(180deg);
+        background-color: var(--elara-light-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+
+    .elara-services__image-wrap {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .elara-services__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .elara-services__label {
+        padding: 1rem;
+        background-color: var(--elara-light-bg);
+        flex-shrink: 0;
+    }
+
+    .elara-services__name {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        color: var(--elara-light-text);
+        margin: 0;
+        text-align: center;
+    }
+
+
+    .elara-services__card-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .elara-services__duration {
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        color: var(--elara-light-bg);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border: 1px solid var(--elara-light-bg);
+        border-radius: 20px;
+    }
+
+    .elara-services__price {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        color: var(--elara-light-bg);
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+
+    .elara-services__btn {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        border-radius: 10px;    
+        background-color: transparent;
+        border: 1px solid var(--elara-light-bg);
+        color: var(--elara-light-bg);
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .elara-services__btn:hover {
+        background-color: var(--elara-light-bg);
+        color: var(--elara-light-primary);
+    }
+
+    .elara-services_back_name {
+        font-size: 1.2rem;
+        color: var(--elara-light-bg);
+    }
+</style>
+{% schema %}
+{
+    "name": "Elara Services",
+    "settings": []
+}
+{% endschema %}

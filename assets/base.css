@@ -53,6 +53,7 @@ body {
   --elara-light-primary: #641b2f;
   --elara-light-secondary: #8b2d3b;
   --elara-light-accent: #be5b50;
+  --elara-light-accent-hover: #c16a60cc;
 
   /* Elara - Dark Mode */
   --elara-dark-bg: #070303;

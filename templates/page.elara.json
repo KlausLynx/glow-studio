@@ -3,9 +3,14 @@
         "elara-hero": {
         "type": "elara-hero",
         "settings": {}
+        },
+        "elara-services": {
+        "type": "elara-services",
+        "settings": {}
         }
     },
     "order": [
-        "elara-hero"
+        "elara-hero",
+        "elara-services"
     ]
 }
