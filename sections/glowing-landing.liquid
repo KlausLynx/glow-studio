@@ -1,0 +1,357 @@
+<div class="glow-landing">
+
+    <!-- Left curtain (closes on load, opens on animate) -->
+    <div class="glow-landing__curtain glow-landing__curtain--left">
+        <span class="glow-landing__curtain-text glow-landing__curtain-text__left" style="color: #641b2f">Glow</span>
+    </div>
+
+    <!-- Right curtain -->
+    <div class="glow-landing__curtain glow-landing__curtain--right">
+        <span class="glow-landing__curtain-text glow-landing__curtain-text__right" style="color: #4A4947">Studio</span>
+    </div>
+
+    <!-- Knox Side -->
+    <div class="glow-landing__side glow-landing__side--knox">
+        <div class="glow-landing__bg">
+            <img src="https://cdn.shopify.com/s/files/1/0791/2878/9223/files/knox-hero_800x800.jpg?v=1778969751" alt="Knox" class="glow-landing__img" width="800" height="800" loading="lazy" >
+        </div>
+        <div class="glow-landing__overlay glow-landing__overlay--knox"></div>
+        <div class="glow-landing__content">
+            <h2 class="glow-landing__name">Knox</h2>
+            <p class="glow-landing__tagline">The art of the perfect cut.</p>
+            <a href="/pages/knox-room" class="glow-landing__btn">Enter Knox</a>
+        </div>
+    </div>
+
+    <!-- Elara Side -->
+    <div class="glow-landing__side glow-landing__side--elara">
+        <div class="glow-landing__bg">
+        <img src="https://cdn.shopify.com/s/files/1/0791/2878/9223/files/elara_1920x1920.jpg?v=1779027656" alt="Elara" class="glow-landing__img" width="1920" height="1920" loading="lazy">
+        </div>
+        <div class="glow-landing__overlay glow-landing__overlay--elara"></div>
+        <div class="glow-landing__content">
+        <h2 class="glow-landing__name">Elara</h2>
+        <p class="glow-landing__tagline">Where beauty meets craft.</p>
+        <a href="/pages/elara-room" class="glow-landing__btn">Enter Elara</a>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .glow-landing {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    .glow-landing__curtain {
+        position: fixed;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background-color: #0a0a0a;
+        transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 100;
+    }
+
+    .glow-landing__curtain--left {
+        left: 0;
+        transform: translateX(0);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .glow-landing__curtain--right {
+        right: 0;
+        transform: translateX(0);
+        display: flex;
+        align-items: center;
+    }
+
+    .glow-landing__curtain-text {
+        font-family: var(--font-heading);
+        font-size: 8rem;
+        font-weight: 900;  
+        letter-spacing: 0.1em;
+        opacity: 0;
+    }
+
+    .glow-landing__curtain-text__left {
+        display: flex;
+    }
+    
+    .glow-landing__curtain--left.is-open {
+        transform: translateX(-100%);
+    } 
+
+    .glow-landing__curtain--right.is-open {
+        transform: translateX(100%);
+    } 
+
+    /* Sides */
+    .glow-landing__side {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        transition: width 0.6s ease;
+        cursor: pointer;
+    }
+
+    .glow-landing__side--knox:hover {
+        width: 60%;
+    }
+
+    .glow-landing__side--elara:hover {
+        width: 60%;
+    }
+
+    /* Background image */
+    .glow-landing__bg {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    } 
+
+    .glow-landing__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.6s ease;
+    }
+
+    .glow-landing__side:hover .glow-landing__img {
+        transform: scale(1.05);
+    }
+
+    /* Overlays */
+    .glow-landing__overlay {
+        position: absolute;
+        inset: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .glow-landing__overlay--knox {
+        background-color: rgba(20, 25, 40, 0.55);
+    }
+
+    .glow-landing__overlay--elara {
+        background-color: rgba(255, 248, 248, 0.25);
+    }
+
+    .glow-landing__side--knox:hover .glow-landing__overlay--knox {
+        background-color: rgba(20, 25, 40, 0.35);
+    }
+
+    .glow-landing__side--elara:hover .glow-landing__overlay--elara {
+        background-color: rgba(255, 248, 248, 0.1);
+    }
+
+    /* Content */
+    .glow-landing__content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        opacity: 0;
+    } 
+
+    .glow-landing__name {
+        font-family: var(--font-heading);
+        font-size: clamp(3rem, 8vw, 7rem);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    .glow-landing__side--knox .glow-landing__name {
+        color: var(--knox-dark-text);
+    }
+
+    .glow-landing__side--elara .glow-landing__name {
+        color: var(--elara-light-text);
+    }
+
+    .glow-landing__tagline {
+        font-family: var(--font-body);
+        font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+        letter-spacing: 0.08em;
+    }
+
+    .glow-landing__side--knox .glow-landing__tagline {
+        color: var(--knox-dark-accent);
+    }
+
+    .glow-landing__side--elara .glow-landing__tagline {
+        color: var(--elara-light-primary);
+    }
+
+    .glow-landing__btn {
+        padding: 0.75rem 2rem;
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid;
+        transition: all 0.3s ease;
+    }
+
+    .glow-landing__side--knox .glow-landing__btn {
+        color: var(--knox-dark-accent);
+        border-color: var(--knox-dark-accent);
+    }
+
+    .glow-landing__side--knox .glow-landing__btn:hover {
+        background-color: var(--knox-dark-accent);
+        color: var(--knox-dark-bg);
+    }
+
+    .glow-landing__side--elara .glow-landing__btn {
+        color: var(--elara-light-primary);
+        border-color: var(--elara-light-primary);
+    }
+
+    .glow-landing__side--elara .glow-landing__btn:hover {
+        background-color: var(--elara-light-primary);
+        color: var(--elara-light-bg);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .glow-landing {
+        flex-direction: column;
+        }
+
+        .glow-landing__side {
+        width: 100%;
+        height: 50%;
+        }
+
+        .glow-landing__side--knox:hover,
+        .glow-landing__side--elara:hover {
+        width: 100%;
+        height: 60%;
+        }
+
+        .glow-landing__curtain {
+        width: 100%;
+        height: 50%;
+        }
+
+        .glow-landing__curtain--left {
+        top: 0;
+        transform: translateY(0);
+        }
+
+        .glow-landing__curtain--right {
+        bottom: 0;
+        top: auto;
+        transform: translateY(0);
+        }
+
+        .glow-landing__curtain--left.is-open {
+        transform: translateY(-100%);
+        }
+
+        .glow-landing__curtain--right.is-open {
+        transform: translateY(100%);
+        }
+    } 
+</style>
+
+<script>
+    window.addEventListener('pageshow', function() {
+        const curtainLeft = document.querySelector('.glow-landing__curtain--left');
+        const curtainRight = document.querySelector('.glow-landing__curtain--right');
+        const curtainTextLeft = document.querySelector('.glow-landing__curtain-text__left');
+        const curtainTextRight = document.querySelector('.glow-landing__curtain-text__right');
+        const contents = document.querySelectorAll('.glow-landing__content');
+        const knox = document.querySelector('.glow-landing__side--knox');
+        const elara = document.querySelector('.glow-landing__side--elara');
+
+        const tl = gsap.timeline();
+
+        // Step 1 — curtain text fades in
+        tl.fromTo(curtainTextLeft,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }
+        )
+        .fromTo(curtainTextRight,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' },
+        '-=1'
+        )
+
+        // Step 2 — curtains open
+        .to(curtainLeft, {
+            x: '-100%',
+            duration: 1.2,
+            ease: 'power3.inOut'
+        }, '+=0.5')
+        .to(curtainRight, {
+            x: '100%',
+            duration: 1.2,
+            ease: 'power3.inOut'
+        }, '<')
+
+    // Step 3 — content fades in
+    .fromTo(contents,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power2.out'
+      },
+      '-=0.3'
+    );
+
+    // Hover interactions
+    knox.addEventListener('mouseenter', () => {
+      gsap.to(knox, { width: '60%', duration: 0.4, ease: 'power2.out' });
+      gsap.to(elara, { width: '40%', duration: 0.4, ease: 'power2.out' });
+    });
+
+    knox.addEventListener('mouseleave', () => {
+      gsap.to(knox, { width: '50%', duration: 0.4, ease: 'power2.out' });
+      gsap.to(elara, { width: '50%', duration: 0.4, ease: 'power2.out' });
+    });
+
+    elara.addEventListener('mouseenter', () => {
+      gsap.to(elara, { width: '60%', duration: 0.4, ease: 'power2.out' });
+      gsap.to(knox, { width: '40%', duration: 0.4, ease: 'power2.out' });
+    });
+
+    elara.addEventListener('mouseleave', () => {
+      gsap.to(knox, { width: '50%', duration: 0.4, ease: 'power2.out' });
+      gsap.to(elara, { width: '50%', duration: 0.4, ease: 'power2.out' });
+    });
+  });
+</script>
+
+{% schema %}
+{
+    "name": "Glowing Landing",
+    "settings": []
+}
+{% endschema %}
