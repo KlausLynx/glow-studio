@@ -7,10 +7,15 @@
         "elara-services": {
         "type": "elara-services",
         "settings": {}
+        },
+        "elara-shop-teaser": {
+        "type": "elara-shop-teaser",
+        "settings": {}
         }
     },
     "order": [
         "elara-hero",
-        "elara-services"
+        "elara-services",
+        "elara-shop-teaser"
     ]
 }

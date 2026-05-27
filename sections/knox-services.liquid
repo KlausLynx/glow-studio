@@ -26,7 +26,7 @@
             <span class="knox-services__duration">{{ details[1] }}</span>
           </div>
           <p class="knox-services__price">₦{{ details[2] }}</p>
-          <a href="#" class="knox-services__btn">Book Now</a>
+          <a href="/pages/contact" class="knox-services__btn">Book Now</a>
         </div>
       </div>
     {% endfor %}
@@ -35,7 +35,7 @@
 
 <style>
   .knox-services {
-    background-color: var(--knox-dark-bg);
+    background-color: var(--current-bg);
     padding: 5rem 2rem;
   }
 
@@ -47,7 +47,7 @@
   .knox-services__title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    color: var(--knox-dark-text);
+    color: var(--current-text);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -56,7 +56,7 @@
   .knox-services__subtitle {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--knox-dark-accent);
+    color: var(--current-accent);
     letter-spacing: 0.05em;
   }
 
@@ -69,8 +69,8 @@
   }
 
   .knox-services__card {
-    background-color: var(--knox-dark-primary);
-    border: 1px solid var(--knox-dark-secondary);
+    background-color: var(--current-bg);
+    border: 1px solid var(--current-border);
     border-radius: 4px;
     overflow: hidden;
     display: flex;
@@ -82,7 +82,7 @@
 
   .knox-services__card:hover {
     transform: translateY(-4px);
-    border-color: var(--knox-dark-accent);
+    border-color: var(--current-accent);
   }
 
   .knox-services__card.is-visible {
@@ -124,14 +124,14 @@
   .knox-services__name {
     font-family: var(--font-heading);
     font-size: 1.2rem;
-    color: var(--knox-dark-text);
+    color: var(--current-text);
     margin: 0;
   }
 
   .knox-services__duration {
     font-family: var(--font-body);
     font-size: 0.75rem;
-    color: var(--knox-dark-secondary);
+    color: var(--current-secondary);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -139,15 +139,15 @@
   .knox-services__price {
     font-family: var(--font-heading);
     font-size: 1.8rem;
-    color: var(--knox-dark-accent);
+    color: var(--current-accent);
     margin: 0;
   }
 
   .knox-services__btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border: 1px solid var(--knox-dark-accent);
-    color: var(--knox-dark-accent);
+    border: 1px solid var(--current-accent);
+    color: var(--current-accent);
     font-family: var(--font-body);
     font-size: 0.8rem;
     letter-spacing: 0.2em;
@@ -159,8 +159,8 @@
   }
 
   .knox-services__btn:hover {
-    background-color: var(--knox-dark-accent);
-    color: var(--knox-dark-bg);
+    background-color: var(--current-accent);
+    color: var(--current-bg);
   }
 
   @media (max-width: 768px) {

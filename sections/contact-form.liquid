@@ -1,0 +1,349 @@
+<section class="contact-section">
+    <div class="contact-section__wrapper">
+
+    <!-- LEFT — Contact Info -->
+    <div class="contact-section__info">
+        <h2 class="contact-section__info-title">Visit Us</h2>
+        <div class="contact-section__info-line">
+            <span class="contact-section__info-icon">📍</span>
+            <div>
+            <p class="contact-section__info-label">Address</p>
+            <p class="contact-section__info-value">123 Glow Avenue, Lagos, Nigeria</p>
+            </div>
+        </div>
+        <div class="contact-section__info-line">
+            <span class="contact-section__info-icon">📞</span>
+            <div>
+            <p class="contact-section__info-label">Phone</p>
+            <p class="contact-section__info-value">+234 800 000 0000</p>
+            </div>
+        </div>
+        <div class="contact-section__info-line">
+            <span class="contact-section__info-icon">✉</span>
+            <div>
+            <p class="contact-section__info-label">Email</p>
+            <p class="contact-section__info-value">hello@glowstudio.com</p>
+            </div>
+        </div>
+        <div class="contact-section__info-line">
+            <span class="contact-section__info-icon">🕐</span>
+            <div>
+            <p class="contact-section__info-label">Hours</p>
+            <p class="contact-section__info-value">Mon–Sat: 9am – 7pm</p>
+            <p class="contact-section__info-value">Sunday: 11am – 5pm</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT — Contact Form -->
+    <div class="contact-section__form">
+        <h2 class="contact-section__form-title">Send A Message</h2>
+
+        {%- form 'contact' -%}
+
+            {%- if form.posted_successfully? -%}
+            <div class="contact-section__success">
+                <p>Thank you for reaching out — we'll be in touch shortly.</p>
+            </div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+            <div class="contact-section__error">
+                <p>Please fix the following errors:</p>
+                <ul>
+                {%- for error in form.errors -%}
+                    <li>{{ error }}</li>
+                {%- endfor -%}
+                </ul>
+            </div>
+            {%- endif -%}
+
+            <div class="contact-section__field">
+                <label class="contact-section__label" for="ContactName">Full Name</label>
+                <input
+                    type="text"
+                    id="ContactName"
+                    name="contact[name]"
+                    class="contact-section__input"
+                    placeholder="Your full name"
+                    required
+                    value="{% if form.name %}{{ form.name }}{% endif %}"
+                >
+            </div>
+
+            <div class="contact-section__field">
+                <label class="contact-section__label" for="ContactEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="ContactEmail"
+                    name="contact[email]"
+                    class="contact-section__input"
+                    placeholder="your@email.com"
+                    required
+                    value="{% if form.email %}{{ form.email }}{% endif %}"
+                >
+            </div>
+
+            <div class="contact-section__field">
+                <label class="contact-section__label" for="ContactPhone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="ContactPhone"
+                    name="contact[phone]"
+                    class="contact-section__input"
+                    placeholder="+234..."
+                    value="{% if form.phone %}{{ form.phone }}{% endif %}"
+                >
+            </div>
+
+            <div class="contact-section__field">
+                <label class="contact-section__label" for="ContactService">Interested In</label>
+                <select
+                    id="ContactService"
+                    name="contact[service]"
+                    class="contact-section__input contact-section__select"
+                >
+                    <option value="">Select a service</option>
+                    <option value="knox">Knox — Men's Services</option>
+                    <option value="elara">Elara — Women's Services</option>
+                    <option value="hair-shop">Hair Shop — Products</option>
+                    <option value="other">Other Enquiry</option>
+                </select>
+            </div>
+
+            <div class="contact-section__field">
+                <label class="contact-section__label" for="ContactMessage">Message</label>
+                <textarea
+                    id="ContactMessage"
+                    name="contact[body]"
+                    class="contact-section__input contact-section__textarea"
+                    placeholder="Tell us what you need..."
+                    rows="5"
+                    required
+                >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+
+            <button type="submit" class="contact-section__btn">
+            <span>Send Message</span>
+            </button>
+
+        {%- endform -%}
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .contact-section {
+        background-color: var(--current-bg);
+        color: var(--current-text);
+        padding: 5rem 2rem;
+        border-top: 1px solid var(--current-border);
+    }
+
+    .contact-section__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Info Side */
+    .contact-section__info-title,
+    .contact-section__form-title {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        color: var(--current-text);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+    }
+
+    .contact-section__info-title::after,
+    .contact-section__form-title::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 1px;
+        background-color: var(--current-accent);
+        margin-top: 0.75rem;
+    }
+
+    .contact-section__info-line {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-section__info-icon {
+        font-size: 1.2rem;
+        margin-top: 2px;
+    }
+
+    .contact-section__info-label {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--current-text);
+        margin: 0 0 4px;
+    }
+
+    .contact-section__info-value {
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        color: var(--current-text);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Form Side */
+    .contact-section__field {
+        margin-bottom: 2rem;
+    }
+
+    .contact-section__label {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--current-accent);
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-section__input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1.5px solid var(--current-border);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: var(--current-text);
+        padding: 0.75rem 0;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+        cursor: text;
+    }
+
+    .contact-section__input::placeholder {
+        color: var(--current-secondary);
+        padding-left: 1rem;
+    }
+
+    .contact-section__input:focus {
+        border-bottom-color: var(--current-accent);
+    }
+
+    .contact-section__select {
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .contact-section__select option {
+        background-color: var(--current-bg);
+        color: var(--current-text);
+    }
+
+    .contact-section__textarea {
+        resize: none;
+        line-height: 1.6;
+    }
+
+    /* Button */
+    .contact-section__btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: transparent;
+        border: 1px solid var(--current-accent);
+        color: var(--current-accent);
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-section__btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--current-accent);
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+        z-index: 1;
+    }
+
+    .contact-section__btn:hover::before {
+        transform: translateX(0);
+    }
+
+    .contact-section__btn span {
+        position: relative;
+        z-index: 2;
+    }
+
+    .contact-section__btn:hover span {
+        color: var(--current-bg);
+    }
+
+    /* Success & Error */
+    .contact-section__success {
+        background-color: rgba(190, 91, 80, 0.1);
+        border: 1px solid var(--current-accent);
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 2px;
+    }
+
+    .contact-section__success p {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--current-accent);
+        margin: 0;
+    }
+
+    .contact-section__error {
+        background-color: rgba(174, 76, 65, 0.1);
+        border: 1px solid var(--current-accent);
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 2px;
+    }
+
+    .contact-section__error p,
+    .contact-section__error li {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--current-accent);
+        margin: 0;
+    }
+
+    .contact-section__error ul {
+        margin: 0.5rem 0 0 1rem;
+        padding: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .contact-section__wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Contact Form",
+    "settings": []
+}
+{% endschema %}
