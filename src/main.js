@@ -7,6 +7,8 @@ window.gsap = gsap
 window.TextPlugin = TextPlugin
 window.ScrollTrigger = ScrollTrigger
 
+document.dispatchEvent(new Event('gsap:ready'))
+
 function initTheme() {
     const savedTheme = localStorage.getItem('glow-theme') || 'light'
     const systemDark = window.matchMedia('prefer-color-scheme: dark').matches
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('theme-toggle')
     if (btn) btn.addEventListener('click', toggleTheme)
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem('glow-theme')) {
             const theme = e.matches ? 'dark' : 'light'
             document.documentElement.setAttribute('data-theme', theme)

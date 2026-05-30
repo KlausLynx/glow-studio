@@ -1,0 +1,65 @@
+<section class="hair-shop-hero">
+  <div class="hair-shop-hero__content">
+    <p class="hair-shop-hero__label">The Elara Collection</p>
+    <h1 class="hair-shop-hero__title">Hair Shop</h1>
+    <p class="hair-shop-hero__desc">Curated products for the modern woman. Every formula chosen with care, every ingredient purposeful.</p>
+  </div>
+</section>
+
+<style>
+  .hair-shop-hero {
+    background-color: var(--elara-light-bg);
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--elara-light-secondary);
+  }
+
+  .hair-shop-hero__content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hair-shop-hero__label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--elara-light-accent);
+    margin: 0 0 1rem;
+  }
+
+  .hair-shop-hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--elara-light-text);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+  }
+
+  .hair-shop-hero__title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: var(--elara-light-accent);
+    margin: 1rem auto 0;
+  }
+
+  .hair-shop-hero__desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--elara-light-text);
+    line-height: 1.8;
+    margin: 0;
+    opacity: 0.8;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hair Shop Hero",
+  "settings": []
+}
+{% endschema %}
