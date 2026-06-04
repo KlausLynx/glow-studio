@@ -21,9 +21,23 @@
 
     <!-- Right Side Actions -->
     <div class="glow-header__actions">
-      <a href="/pages/contact" class="glow-header__book-btn">
+      <!-- Search -->
+      <button class="glow-header__icon-btn" id="glow-search-btn" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="{{ routes.cart_url }}" class="glow-header__icon-btn glow-header__cart" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="glow-header__cart-count" id="cart-count">
+          {{ cart.item_count }}
+        </span>
+      </a>
+
+      <a href="https://calendly.com/onyiavitus" target="_blank" class="glow-header__book-btn">
         <span>Book Now</span>
       </a>
+
       <button class="glow-header__toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
         <i class="fa-solid fa-moon" id="theme-icon"></i>
       </button>
@@ -45,15 +59,23 @@
       <a href="/pages/elara-room" class="glow-header__drawer-link">Elara</a>
       <a href="{{ collections['hair-shop'].url }}" class="glow-header__drawer-link">Hair Shop</a>
       <a href="/pages/contact" class="glow-header__drawer-link">Contact</a>
-      <a href="/pages/contact" class="glow-header__drawer-book">Book Now</a>
+      <a href="{{ routes.cart_url }}" class="glow-header__drawer-link">
+        Cart 
+        {% if cart.item_count > 0 %}
+          ({{ cart.item_count }})
+        {% endif %}
+      </a>
+      <a href="https://calendly.com/onyiavitus" target="_blank" class="glow-header__drawer-book">Book Now</a>
     </div>
   </div>
 </header>
 
 <style>
-  /* ============================================
-     GLOW HEADER
-     ============================================ */
+  /* 
+    ============================================
+      GLOW HEADER
+    ============================================ 
+  */
   .glow-header {
     position: sticky;
     top: 0;
@@ -123,6 +145,55 @@
     align-items: center;
     gap: 1.25rem;
   }
+
+  .glow-header__icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--current-text);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.glow-header__icon-btn:hover {
+  color: var(--current-accent);
+}
+
+/* Cart count badge */
+.glow-header__cart {
+  position: relative;
+}
+
+.glow-header__cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--current-accent);
+  color: var(--current-bg);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Hide count when 0 */
+.glow-header__cart-count:empty,
+.glow-header__cart-count[data-count="0"] {
+  display: none;
+}
 
   /* Book Now Button */
   .glow-header__book-btn {
@@ -283,6 +354,12 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('glow-search-btn').addEventListener('click', function() {
+      const searchModal = document.querySelector('#search-modal')
+      if (searchModal) {
+        searchModal.querySelector('dialog')?.showModal()
+      }
+    })
     const hamburger = document.getElementById('glow-hamburger')
     const drawer = document.getElementById('glow-drawer')
 
