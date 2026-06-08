@@ -6,9 +6,12 @@
     assign product = collections.all.products.first
   endif
 
-  assign variant = closest.product.selected_or_first_available_variant
+  assign variant = product.selected_or_first_available_variant
+  if variant == blank
+    assign variant = product.variants.first
+  endif
   assign inventory_quantity = variant.inventory_quantity
-  assign inventory_policy = variant.inventory_policy
+  assign inventory_policy = variant.inventory_policy | default: 'deny'
 
   if variant.inventory_management == 'shopify'
     assign inventory_managed = true

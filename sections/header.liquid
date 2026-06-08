@@ -29,9 +29,7 @@
       <!-- Cart -->
       <a href="{{ routes.cart_url }}" class="glow-header__icon-btn glow-header__cart" aria-label="Cart">
         <i class="fa-solid fa-bag-shopping"></i>
-        <span class="glow-header__cart-count" id="cart-count">
-          {{ cart.item_count }}
-        </span>
+        <span class="glow-header__cart-count" id="cart-count">{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}</span>
       </a>
 
       <a href="https://calendly.com/onyiavitus" target="_blank" class="glow-header__book-btn">
@@ -190,8 +188,7 @@
 }
 
 /* Hide count when 0 */
-.glow-header__cart-count:empty,
-.glow-header__cart-count[data-count="0"] {
+.glow-header__cart-count:empty {
   display: none;
 }
 
@@ -354,21 +351,27 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+
+    // Search modal
     document.getElementById('glow-search-btn').addEventListener('click', function() {
       const searchModal = document.querySelector('#search-modal')
       if (searchModal) {
         searchModal.querySelector('dialog')?.showModal()
       }
     })
+
+    // Mobile hamburger
     const hamburger = document.getElementById('glow-hamburger')
     const drawer = document.getElementById('glow-drawer')
-
     hamburger.addEventListener('click', function() {
       hamburger.classList.toggle('is-open')
       drawer.classList.toggle('is-open')
     })
-  })
+
+  });
+
 </script>
+<script src="{{ 'cart-count.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
