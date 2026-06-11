@@ -314,11 +314,11 @@ class PredictiveSearchComponent extends Component {
     if (!this.dataset.sectionId) return;
 
     const url = new URL(Theme.routes.predictive_search_url, location.origin);
-    url.searchParams.set('q', searchTerm);
-    url.searchParams.set('resources[limit_scope]', 'each');
+      url.searchParams.set('q', searchTerm);           // ← user's typed input
+      url.searchParams.set('resources[limit_scope]', 'each');
+      url.searchParams.set('resources[type]', 'product');
 
     const { predictiveSearchResults } = this.refs;
-
     const abortController = this.#createAbortController();
 
     sectionRenderer
@@ -328,7 +328,20 @@ class PredictiveSearchComponent extends Component {
 
         if (abortController.signal.aborted) return;
 
-        morph(predictiveSearchResults, resultsMarkup);
+        // filter: only keep products tagged 'hair-shop'
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(resultsMarkup, 'text/html');
+
+        doc.querySelectorAll('.predictive-search-results__card').forEach((card) => {
+          if (!(card instanceof HTMLElement)) return;  // ← add this line
+          
+          const tags = card.dataset.tags || '';
+          if (!tags.includes('hair-shop')) card.remove();
+        });
+
+        const filteredMarkup = doc.querySelector('.predictive-search-results')?.innerHTML || resultsMarkup;
+
+        morph(predictiveSearchResults, filteredMarkup);
 
         this.#resetScrollPositions();
       })

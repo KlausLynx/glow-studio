@@ -65,8 +65,18 @@
           {% if predictive_search.resources.products.size > 0 %}
             {%- liquid
               assign title = 'content.search_results_resource_products' | t
-              assign products = predictive_search.resources.products
-              render 'predictive-search-products-list', title: title, products: products
+              assign hair_products = "" | split: ""
+
+              for product in predictive_search.resources.products
+                for c in product.collections
+                  if c.handle == "hair-shop"
+                    assign hair_products = hair_products | concat: product
+                    break
+                  endif
+                endfor
+              endfor
+
+              render 'predictive-search-products-list', title: title, products: hair_products
             -%}
           {% endif %}
 

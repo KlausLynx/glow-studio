@@ -159,7 +159,7 @@ body {
 .search-input {
   font-family: var(--font-body) !important;
   font-size: 1rem !important;
-  color: var(--current-text) !important;
+  color: black !important;
   background-color: transparent !important;
   letter-spacing: 0.05em !important;
 }
