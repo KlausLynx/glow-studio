@@ -132,7 +132,7 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View all",
-                "open_in_new_tab": false,
+                "open_in_new_tab": true,
                 "style_class": "link",
                 "width": "fit-content",
                 "custom_width": 100,
@@ -239,7 +239,7 @@
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "all",
+        "collection": "hair-shop",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,
