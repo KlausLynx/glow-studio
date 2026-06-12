@@ -86,13 +86,28 @@
     <h4 class="predictive-search-results__title">
       {{ title }}
     </h4>
-    <ul
-      class="predictive-search-results__list predictive-search-results__wrapper-products list-unstyled"
-    >
-      {% liquid
+    <ul class="predictive-search-results__list predictive-search-results__wrapper-products list-unstyled">
+
+      {%- liquid
         assign limit = limit | default: 8
-      %}
-      {% for product in products limit: limit %}
+        assign displayed = 0
+      -%}
+
+      {% for product in products %}
+
+        {% comment %} Stop once we've shown enough {% endcomment %}
+        {% if displayed >= limit %}
+          {% break %}
+        {% endif %}
+
+        {% comment %} Skip anything that is not Hair Care {% endcomment %}
+        {% assign product_type = product.type | downcase %}
+        {% if product_type != 'hair care' %}
+          {% continue %}
+        {% endif %}
+
+        {% assign displayed = displayed | plus: 1 %}
+
         <li
           class="predictive-search-results__card predictive-search-results__card--product"
           ref="resultsItems[]"
