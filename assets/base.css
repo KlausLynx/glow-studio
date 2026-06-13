@@ -241,7 +241,140 @@ body {
   border-top: 1px solid var(--current-border) !important;
   background-color: var(--current-bg) !important;
   padding: 1rem !important;
+  overflow: hidden !important;
+  z-index: 1000 !important;
 }
+
+/* ============================================
+   SEARCH MODAL — RESOURCE CAROUSEL
+   (Pages, Collections, Articles)
+   ============================================ */
+
+/*
+  The carousel sits inside .predictive-search-results__wrapper
+  Each slide has a fixed width so they peek and invite scrolling
+*/
+.search-modal .predictive-search-results__wrapper slideshow-slides {
+  padding-inline: var(--padding-xl) !important;
+  gap: var(--gap-md) !important;
+}
+
+/*
+  Each card/slide — fixed width so multiple peek into view
+  On mobile: show ~1.5 cards (user knows they can scroll)
+  On desktop: show ~3 cards
+*/
+.search-modal .predictive-search-results__wrapper slideshow-slide {
+  width: 60% !important;          /* mobile: 1.5 cards visible */
+  flex-shrink: 0 !important;
+}
+
+@media screen and (min-width: 750px) {
+  .search-modal .predictive-search-results__wrapper slideshow-slide {
+    width: 30% !important;        /* desktop: ~3 cards visible */
+  }
+}
+
+/*
+  The card itself — clean column layout
+*/
+.search-modal .predictive-search-results__wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--gap-xs) !important;
+  border-radius: var(--card-corner-radius) !important;
+  overflow: hidden !important;
+  background-color: var(--current-bg) !important;
+  transition: box-shadow 0.2s ease !important;
+}
+
+.search-modal .predictive-search-results__wrapper .resource-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+/*
+  The image area — portrait ratio 4:5
+  For pages with NO image, show a styled placeholder background
+*/
+.search-modal .predictive-search-results__wrapper .resource-card__media {
+  aspect-ratio: 4 / 5 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background-color: rgb(var(--color-foreground-rgb) / 0.04) !important;
+  border-radius: var(--card-corner-radius) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/*
+  When there IS an image — make it fill the portrait box
+*/
+.search-modal .predictive-search-results__wrapper .resource-card__image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  aspect-ratio: 4 / 5 !important;
+}
+
+/*
+  Card content area — title and subtext
+*/
+.search-modal .predictive-search-results__wrapper .resource-card__content {
+  padding: var(--padding-xs) var(--padding-xs) var(--padding-sm) !important;
+}
+
+.search-modal .predictive-search-results__wrapper .resource-card__title {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size--sm) !important;
+  color: var(--current-text) !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.search-modal .predictive-search-results__wrapper .resource-card__subtext {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size--xs) !important;
+  color: var(--current-secondary) !important;
+  margin: 0 !important;
+}
+
+/*
+  The section header — "Pages", "Collections" label
+*/
+.search-modal .predictive-search-results__resource-header {
+  padding-inline: var(--padding-xl) !important;
+  margin-block-end: var(--padding-xs) !important;
+}
+
+/* 
+============================================
+  SEARCH MODAL - GRID + PORTRAIT IMAGES
+  ============================================ 
+*/
+
+/* 2-column grid for the products list */
+.predictive-search-results__wrapper-products {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: var(--gap-md) !important;
+  padding: var(--padding-sm) var(--padding-md) !important;
+}
+
+/* Portrait ratio on the image wrapper — correct class is resource-card__media */
+.predictive-search-results__card--product .resource-card__media {
+  aspect-ratio: 4 / 5 !important;
+  overflow: hidden !important;
+} 
+
+/* Make the image fill that portrait container */
+.predictive-search-results__card--product .resource-card__image {
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+} 
+
 /* 
 ============================================
   SCROLLBAR
