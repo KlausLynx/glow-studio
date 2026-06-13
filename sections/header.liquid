@@ -64,10 +64,14 @@
         {% endif %}
       </a>
       <a href="https://calendly.com/onyiavitus" target="_blank" class="glow-header__drawer-book">Book Now</a>
+
+      <button class="glow-header__drawer-toggle" id="theme-toggle-mobile" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon" id="theme-icon-mobile"></i>
+        <span>Dark Mode</span>
+      </button>
     </div>
   </div>
 </header>
-
 <style>
   /* 
     ============================================
@@ -336,9 +340,31 @@
     color: var(--current-bg);
   }
 
+.glow-header__drawer-toggle {
+  background: transparent;
+  border: 1px solid var(--current-accent);
+  color: var(--current-accent);
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.glow-header__drawer-toggle:hover {
+  background-color: var(--current-accent);
+  color: var(--current-bg);
+}
+
   /* Mobile */
   @media (max-width: 768px) {
-    .glow-header__nav,
     .glow-header__actions {
       display: none;
     }
@@ -346,7 +372,20 @@
     .glow-header__hamburger {
       display: flex;
     }
-  }
+
+    .glow-header__nav {
+      display: none;  /* hide nav */
+    }
+
+    .glow-header__actions {
+      display: flex;  /* keep actions visible */
+    }
+
+    /* Hide everything except the toggle */
+    .glow-header__actions > *:not(.glow-header__toggle) {
+      display: none;
+    }
+}
 </style>
 
 <script>
